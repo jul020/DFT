@@ -1,5 +1,5 @@
  &CONTROL
-  calculation = 'relax' ,
+  calculation = 'vc-relax' ,
   outdir = './tmp' ,
   prefix = 'PbTiO3',
   pseudo_dir = './' ,
@@ -7,8 +7,9 @@
   tstress = .True.,
  /
  &SYSTEM
-  ibrav = 1,
+  ibrav = 6,
   celldm(1) = {alat},
+  celldm(3) = {calat},
   nat = 5,
   ntyp = 3,
   ecutwfc = 80,
@@ -34,8 +35,8 @@ ATOMIC_SPECIES
    O    16     O.pbe-n-rrkjus_psl.0.1.UPF
 ATOMIC_POSITIONS crystal 
    Pb      0.0    0.0    0.0  0 0 0
-   Ti      0.5    0.5    0.5  0 0 0
-   O       0.5    0.5    0.0 
+   Ti      {tx}    {ty}    {tz}
+   O       0.5    0.5    0.0
    O       0.5    0.0    0.5 
    O       0.0    0.5    0.5  
 K_POINTS automatic 
