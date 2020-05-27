@@ -11,7 +11,7 @@
   celldm(1) = {alat},
   nat = 1,
   ntyp = 1,
-  ecutwfc = 30,
+  ecutwfc = {ecut},
   ecutrho = 150,
   occupations = 'smearing',
   smearing = 'cold',
