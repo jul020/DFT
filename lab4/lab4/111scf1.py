@@ -9,11 +9,11 @@ with open("Al.111.bulk.pw.in.template") as f:
 # Set default values for various parameters
 k1 = 16 # k-point grid of 16x16x16
 k3 = 7
-alat = 7.5 # The lattice parameter for the cell in Bohr.
-ecut = 90
+alat = 7.54 # The lattice parameter for the cell in Bohr.
+ecut = 50
 
 # Loop through different k-points.
-for alat in np.arange(7.5, 7.69, 0.03):
+for alat in np.arange(7.54, 7.67, 0.02):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(k1=k1, k3=k3, alat=alat, ecut=ecut)

@@ -10,10 +10,10 @@ with open("Al.100.surf.template") as f:
 #k = 16 # k-point grid of 16x16x16
 #alat = 7.605 # The lattice parameter for the cell in Bohr.
 #ecut = 100
-i=13
+i=15
 
 # Loop through different k-points.
-for i in np.arange(13, 14, 2):
+for i in np.arange(15, 16, 2):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     # s = template.format(k=k, alat=alat, ecut=ecut)

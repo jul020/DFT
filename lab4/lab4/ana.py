@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import re
+import os
 import sys
 import csv
 import argparse
@@ -42,6 +43,7 @@ def get_results(filename):
 
 def analyze(filenames):
     fieldnames = ['ecut', 'nkpts', 'alat', 'energy','total_force','run_time']
+    os.system("rm Al111_ecut.csv")
     with open('Al111_ecut.csv', 'w') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
@@ -83,12 +85,12 @@ xx=np.array(v_ecut)
 # 0.529177208
 # time=np.array(v_rt)
 
-ind=np.where(yy==np.amin(yy))
-print(yy)
+#ind=np.where(yy==np.amin(yy))
+#print(yy)
 
 plt.plot(xx,yy,marker='o',color='purple',linewidth=1.5,markersize=5)
 plt.grid(color='b',lw=0.75)
-plt.title('Cutoff vs. energy')
+plt.title('Cutoff vs. absolute energy (hex Al)')
 plt.xlabel('Cutoff (Ry)')
 plt.ylabel('Absolute energy (meV/atom)')
 plt.savefig('myfig1')
@@ -107,8 +109,8 @@ length=len(yy)
 diff=yy[1:length:1]-yy[0:(length-1):1]
 plt.plot(xx[1:length:1],diff,marker='o',color='green',linewidth=1.5,markersize=5)
 plt.grid(color='b',lw=0.75)
-plt.title('Convergence')
-plt.xlabel('Cutoff')
+plt.title('Convergence (hex Al)')
+plt.xlabel('Cutoff (Ry)')
 plt.ylabel('Absolute energy difference (meV/atom)')
 plt.savefig('myfig3')
 plt.clf()
