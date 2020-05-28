@@ -3,30 +3,30 @@ import shutil
 import numpy as np
 
 # Load the Si.pw.in.template file as a template.
-with open("Al.100.surf.template") as f:
+with open("Al.111.bulk.pw.in.template") as f:
     template = f.read()
 
 # Set default values for various parameters
-#k = 16 # k-point grid of 16x16x16
-#alat = 7.605 # The lattice parameter for the cell in Bohr.
-#ecut = 100
-i=13
+k1 = 16 # k-point grid of 16x16x16
+k3 = 7
+alat = 7.5 # The lattice parameter for the cell in Bohr.
+ecut = 90
 
 # Loop through different k-points.
-for i in np.arange(13, 14, 2):
+for alat in np.arange(7.5, 7.69, 0.03):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
-    # s = template.format(k=k, alat=alat, ecut=ecut)
+    s = template.format(k1=k1, k3=k3, alat=alat, ecut=ecut)
 
     # Let's define an easy jobname.
-    jobname = "Al_100_bulk_%s" % (i)
+    jobname = "Al_111_bulk_%s" % (alat)
 
     # Write the actual input file for PWSCF.
     with open("%s.pw.in" % jobname, "w") as f:
-        f.write(template)
+        f.write(s)
 
     #Print some status messages.
-    # print("Running with alat = %s..." % (alat))
+    # print("Running with ecut = %s..." % (ecut))
     # Run PWSCF. Modify the pw.x command accordingly if needed.
     os.system("pw.x -inp {jobname}.pw.in > {jobname}.out".format(jobname=jobname))
 
