@@ -9,17 +9,17 @@ with open("Al.111.bulk.pw.in.template") as f:
 # Set default values for various parameters
 k1 = 16 # k-point grid of 16x16x16
 k3 = 7
-alat = 7.605 # The lattice parameter for the cell in Bohr.
-ecut = 60
+alat = 7.48 # The lattice parameter for the cell in Bohr.
+ecut = 90
 
 # Loop through different k-points.
-for ecut in np.arange(60, 70, 10):
+for alat in np.arange(7.48, 7.67, 0.02):
     # This generates a string from the template with the parameters replaced
     # by the specified values.
     s = template.format(k1=k1, k3=k3, alat=alat, ecut=ecut)
 
     # Let's define an easy jobname.
-    jobname = "Al_111_bulk_%s" % (ecut)
+    jobname = "Al_111_bulk_%s_%s" % (ecut, alat)
 
     # Write the actual input file for PWSCF.
     with open("%s.pw.in" % jobname, "w") as f:
